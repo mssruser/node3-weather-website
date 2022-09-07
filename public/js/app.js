@@ -23,7 +23,7 @@ weatherForm.addEventListener('submit', (evt)=> {
 
     message1.textContent='loading ...'
 
-    const weatherUrl = 'http://localhost:3000/weather?address='+location
+    const weatherUrl = '/weather?address='+location
     fetch(weatherUrl).then((res)=> {
 
         const resOk = res.ok

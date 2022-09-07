@@ -31,7 +31,7 @@ weatherForm.addEventListener('submit', (evt)=> {
         res.json().then((data)=> { 
             
             if (resOk) {
-                message1.textContent = "Temp: " + data.temperature + ". Rain: " + data.precip + ". Location: " + data.location
+                message1.textContent = "Temp: " + data.temperature + " (Feels like: " + data.feelslike + "). Rain: " + data.precip + ". Location: " + data.location + ". Humidity: " + data.humidity
                 message2.textContent = ''
             } 
             else {

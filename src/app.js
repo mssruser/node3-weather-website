@@ -32,8 +32,7 @@ app.get('', (req,res)=>{
 app.get('/weather', (req, res)=> {
 
     console.log(req.query)
-    let serverResponse
-
+    
     const fnPrintError = (error) => {
         console.error('Error on Http request: ', error)
         res.contentType('application/json')
@@ -42,24 +41,18 @@ app.get('/weather', (req, res)=> {
 
 
     if (!req.query.address) {
-        serverResponse = {error: 'address param is mandatory'}
         res.contentType('application/json')
-        res.status(500).send(serverResponse)
+        res.status(500).send({error: 'address param is mandatory'})
     } 
     else {
         
         const fnSucess = (forecast) => {
-            serverResponse = forecast
-            res.contentType('application/json')
-            res.send(serverResponse)
+            res.contentType('application/json').send(forecast)
         }
         
         geocode(req.query.address, 
                 fnPrintError, 
-                (coord)=> { forecast(coord, fnPrintError, fnSucess)})
-
-        console.log('serverResponse',serverResponse)
-        //serverResponse = {weather: 'today is not raining'}
+                (coord)=> { forecast(coord, fnPrintError, fnSucess)})        
     }
     
 })

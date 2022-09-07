@@ -12,9 +12,9 @@ const fnForecast = (location_coords, callbackError, callbackSuccess) => {
             callbackError('error processing weather information');
         }
         else {
-            const {temperature, precip} = body.current
+            const {temperature, precip, humidity, feelslike} = body.current
             console.log('It is currently: ',temperature, ' degrees and % rain: ', precip) 
-            callbackSuccess({temperature, precip, location: location_coords.location})
+            callbackSuccess({temperature, precip, location: location_coords.location, humidity, feelslike})
         }                
     });
 }
